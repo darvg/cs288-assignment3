@@ -1,0 +1,16 @@
+project_root: .
+artifacts:
+  bm25_dir: data/artifacts/bm25
+  dense_dir: data/artifacts/dense
+  chunks_path: data/interim/chunks.jsonl
+runtime:
+  top_k: 6
+  max_contexts: 4
+  timeout_sec: 20
+  default_answer: unknown
+  use_llm: false
+  model_name: qwen/qwen-2.5-7b-instruct
+  allow_extractive_fallback: true
+debug:
+  enabled: false
+  output_dir: data/runs/debug

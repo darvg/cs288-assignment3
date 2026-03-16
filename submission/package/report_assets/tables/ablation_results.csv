@@ -1,0 +1,9 @@
+id,retriever,chunk_size,prompt_contexts,corpus,model_name,em,f1,timeout_count,latency_sec,notes
+A1,bm25,160,4,own,qwen/qwen-2.5-7b-instruct,1.0,1.0,0,0.0,Sample artifacts included; replace with full offline-built corpus for final runs.
+A2,dense,160,4,own,qwen/qwen-2.5-7b-instruct,1.0,1.0,0,0.0,Sample artifacts included; replace with full offline-built corpus for final runs.
+A3,hybrid,160,4,own,qwen/qwen-2.5-7b-instruct,1.0,1.0,0,0.0,Sample artifacts included; replace with full offline-built corpus for final runs.
+A4,hybrid,120,4,own,qwen/qwen-2.5-7b-instruct,1.0,1.0,0,0.0,Sample artifacts included; replace with full offline-built corpus for final runs.
+A5,hybrid,200,4,own,qwen/qwen-2.5-7b-instruct,1.0,1.0,0,0.0,Sample artifacts included; replace with full offline-built corpus for final runs.
+A6,hybrid,160,2,own,qwen/qwen-2.5-7b-instruct,1.0,1.0,0,0.0,Sample artifacts included; replace with full offline-built corpus for final runs.
+A7,hybrid,160,4,reference,qwen/qwen-2.5-7b-instruct,1.0,1.0,0,0.0,Sample artifacts included; replace with full offline-built corpus for final runs.
+A8,hybrid,160,4,own,meta-llama/llama-3.1-8b-instruct,1.0,1.0,0,0.0,Sample artifacts included; replace with full offline-built corpus for final runs.

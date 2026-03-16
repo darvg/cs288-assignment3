@@ -1,0 +1,5 @@
+{
+  "dense_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "num_chunks": 3,
+  "dense_dir": "data/artifacts/dense"
+}

@@ -1,0 +1,5 @@
+category,count
+correct,0
+retrieval_miss,0
+unsupported_or_timeout,0
+generation_mismatch,0

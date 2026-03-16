@@ -1,0 +1,6 @@
+{
+  "num_questions": 100,
+  "questions_with_double_annotation": 30,
+  "double_annotation_fraction": 0.3,
+  "exact_agreement": 1.0
+}

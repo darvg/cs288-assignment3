@@ -1,0 +1,12 @@
+chunking:
+  target_words: 160
+  overlap_words: 40
+sparse:
+  k1: 1.5
+  b: 0.75
+dense:
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  normalize: true
+fusion:
+  rrf_k: 60
+  top_k: 6

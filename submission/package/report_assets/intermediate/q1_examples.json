@@ -1,0 +1,38 @@
+{
+  "guidelines": "Write short factoid questions answerable from a single EECS page. Prefer extractive answers under 10 words, include the source URL, and use 'unknown' only when unsupported.",
+  "examples": [
+    {
+      "id": "q_0001",
+      "question": "What is the office number of Dan Klein?",
+      "answers": [
+        "773 Soda Hall"
+      ],
+      "source_url": "https://eecs.berkeley.edu/people/faculty/dan-klein/",
+      "page_title": "Dan Klein",
+      "answer_type": "extractive",
+      "annotator": "A"
+    },
+    {
+      "id": "q_0002",
+      "question": "Which office is listed for Dan Klein?",
+      "answers": [
+        "773 Soda Hall"
+      ],
+      "source_url": "https://eecs.berkeley.edu/people/faculty/dan-klein/",
+      "page_title": "Dan Klein",
+      "answer_type": "extractive",
+      "annotator": "A"
+    },
+    {
+      "id": "q_0003",
+      "question": "Where is Dan Klein's office?",
+      "answers": [
+        "773 Soda Hall"
+      ],
+      "source_url": "https://eecs.berkeley.edu/people/faculty/dan-klein/",
+      "page_title": "Dan Klein",
+      "answer_type": "extractive",
+      "annotator": "A"
+    }
+  ]
+}
