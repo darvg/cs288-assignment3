@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.io_utils import read_jsonl, write_json, write_jsonl
 
 
-TITLE_SUFFIX_RE = re.compile(r"\s+-\s+EECS at Berkeley$")
+TITLE_SUFFIX_RE = re.compile(r"\s+(?:\||-)\s+EECS at (?:UC )?Berkeley$")
 VERB_RULES = [
     ("wins", re.compile(r"^(.+?) wins (.+)$", re.I), "Who won {tail}?"),
     ("named", re.compile(r"^(.+?) named (.+)$", re.I), "Who was named {tail}?"),
@@ -41,9 +41,9 @@ RULE_QUOTAS = {
     "joins": 6,
     "honored": 6,
     "recognized": 5,
-    "email": 4,
-    "office": 4,
-    "located_in": 4,
+    "email": 0,
+    "office": 0,
+    "located_in": 0,
     "topic_resources": 12,
     "topic_academics": 10,
     "topic_research": 8,
@@ -52,6 +52,9 @@ RULE_QUOTAS = {
     "topic_division": 4,
     "topic_department": 3,
     "topic_industry": 3,
+    "topic_courses": 24,
+    "topic_faculty": 18,
+    "topic_pubs": 24,
 }
 
 
@@ -90,6 +93,24 @@ def descriptor_from_url(url: str) -> str:
         cleaned.extend(words)
     descriptor = " ".join(cleaned[:8]).strip()
     return descriptor or "this topic"
+
+
+def title_descriptor(title: str) -> str:
+    return " ".join(re.sub(r"[^a-z0-9\s]", " ", normalize_title(title).lower()).split())
+
+
+def course_code_from_title(title: str) -> str:
+    match = re.match(r"^Course:\s+(.+)$", normalize_title(title))
+    return " ".join(match.group(1).split()) if match else ""
+
+
+def is_person_like_title(title: str) -> bool:
+    cleaned = normalize_title(title)
+    if len(cleaned.split()) < 2 or len(cleaned.split()) > 5:
+        return False
+    if ":" in cleaned or any(char.isdigit() for char in cleaned):
+        return False
+    return all(part[:1].isupper() for part in cleaned.split() if part)
 
 
 def create_annotation_guidelines() -> str:
@@ -199,6 +220,69 @@ def generate_candidates(pages: list[dict]) -> list[dict]:
                     }
                 )
                 seen_questions.add(key)
+        if "/Courses/" in url:
+            course_code = course_code_from_title(title)
+            if course_code:
+                question = f"Which EECS courses page covers {course_code.lower()}?"
+                answer = title
+                key = f"{question}::{answer}"
+                if key not in seen_questions:
+                    candidates.append(
+                        {
+                            "question": question,
+                            "answers": [answer],
+                            "source_url": url,
+                            "page_title": title,
+                            "answer_type": "extractive",
+                            "annotator": "auto",
+                            "section": "courses",
+                            "benchmark_rule": "topic_courses",
+                            "confidence": "high",
+                        }
+                    )
+                    seen_questions.add(key)
+        if "/Faculty/Homepages/" in url and is_person_like_title(title):
+            descriptor = title_descriptor(title)
+            if descriptor:
+                question = f"Which EECS faculty page covers {descriptor}?"
+                answer = title
+                key = f"{question}::{answer}"
+                if key not in seen_questions:
+                    candidates.append(
+                        {
+                            "question": question,
+                            "answers": [answer],
+                            "source_url": url,
+                            "page_title": title,
+                            "answer_type": "extractive",
+                            "annotator": "auto",
+                            "section": "faculty",
+                            "benchmark_rule": "topic_faculty",
+                            "confidence": "high",
+                        }
+                    )
+                    seen_questions.add(key)
+        if "/Pubs/TechRpts/" in url:
+            descriptor = title_descriptor(title)
+            if descriptor and len(descriptor.split()) >= 4:
+                question = f"Which EECS pubs page covers {descriptor}?"
+                answer = title
+                key = f"{question}::{answer}"
+                if key not in seen_questions:
+                    candidates.append(
+                        {
+                            "question": question,
+                            "answers": [answer],
+                            "source_url": url,
+                            "page_title": title,
+                            "answer_type": "extractive",
+                            "annotator": "auto",
+                            "section": "pubs",
+                            "benchmark_rule": "topic_pubs",
+                            "confidence": "high",
+                        }
+                    )
+                    seen_questions.add(key)
     return candidates
 
 
@@ -209,14 +293,18 @@ def select_benchmark(candidates: list[dict], target_size: int) -> list[dict]:
 
     selected: list[dict] = []
     used_urls: set[str] = set()
+    used_questions: set[str] = set()
     for rule_name, quota in RULE_QUOTAS.items():
         for candidate in by_rule.get(rule_name, []):
             if len([item for item in selected if item["benchmark_rule"] == rule_name]) >= quota:
                 break
             if candidate["source_url"] in used_urls:
                 continue
+            if candidate["question"] in used_questions:
+                continue
             selected.append(candidate)
             used_urls.add(candidate["source_url"])
+            used_questions.add(candidate["question"])
             if len(selected) >= target_size:
                 return assign_ids(selected)
 
@@ -227,10 +315,15 @@ def select_benchmark(candidates: list[dict], target_size: int) -> list[dict]:
     for candidate in remaining:
         if len(selected) >= target_size:
             break
+        if RULE_QUOTAS.get(candidate["benchmark_rule"], 1) == 0:
+            continue
         if candidate["source_url"] in used_urls:
+            continue
+        if candidate["question"] in used_questions:
             continue
         selected.append(candidate)
         used_urls.add(candidate["source_url"])
+        used_questions.add(candidate["question"])
     return assign_ids(selected[:target_size])
 
 

@@ -17,19 +17,26 @@ class _TextParser(HTMLParser):
         super().__init__()
         self.title = ""
         self._in_title = False
+        self._skip_depth = 0
         self.parts: list[str] = []
 
     def handle_starttag(self, tag: str, attrs) -> None:
         if tag == "title":
             self._in_title = True
+        if tag in {"script", "style", "noscript"}:
+            self._skip_depth += 1
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "title":
             self._in_title = False
+        if tag in {"script", "style", "noscript"} and self._skip_depth:
+            self._skip_depth -= 1
         if tag in {"p", "div", "section", "tr", "li", "h1", "h2", "h3"}:
             self.parts.append("\n")
 
     def handle_data(self, data: str) -> None:
+        if self._skip_depth:
+            return
         text = data.strip()
         if not text:
             return

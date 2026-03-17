@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import http.client
 import json
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -15,8 +16,9 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 DEFAULT_SITEMAP_INDEX = "https://eecs.berkeley.edu/sitemap_index.xml"
-DEFAULT_CRAWL_DELAY_SEC = 0.6
+DEFAULT_CRAWL_DELAY_SEC = 0.5
 USER_AGENT = "cs288-a3-rag-crawler/1.0"
+ALLOWED_HOST_RE = re.compile(r"^(?:www\d*\.)?eecs\.berkeley\.edu$", re.I)
 
 
 def canonicalize_url(url: str) -> str:
@@ -61,7 +63,7 @@ def should_visit(url: str) -> bool:
     )
     if parsed.scheme not in {"http", "https"}:
         return False
-    if parsed.netloc != "eecs.berkeley.edu":
+    if not is_allowed_host(parsed.netloc):
         return False
     if lower_path.startswith("/book/") and len(parsed.path) > 300:
         return False
@@ -72,9 +74,16 @@ def should_visit(url: str) -> bool:
 
 def effective_crawl_delay(start_url: str, requested_delay_sec: float) -> float:
     parsed = urllib.parse.urlparse(canonicalize_url(start_url))
-    if parsed.netloc == "eecs.berkeley.edu":
+    if is_allowed_host(parsed.netloc):
         return max(requested_delay_sec, DEFAULT_CRAWL_DELAY_SEC)
     return requested_delay_sec
+
+
+def is_allowed_host(netloc: str) -> bool:
+    host = netloc.lower().strip()
+    if ":" in host:
+        host = host.split(":", 1)[0]
+    return bool(ALLOWED_HOST_RE.fullmatch(host))
 
 
 def url_section(url: str) -> str:
@@ -211,22 +220,32 @@ def _parse_xml_locs(xml_text: str) -> list[str]:
     return locs
 
 
-def _discover_sitemap_urls(sitemap_index_url: str, state: CrawlState) -> list[str]:
-    print(f"[sitemap] fetching index {sitemap_index_url}", flush=True)
-    xml_text, _, _ = _fetch_url(sitemap_index_url, state)
-    sitemap_urls = _parse_xml_locs(xml_text)
-    print(f"[sitemap] discovered {len(sitemap_urls)} sitemap files", flush=True)
+def _discover_sitemap_urls(sitemap_index_urls: list[str], state: CrawlState) -> list[str]:
     discovered: list[str] = []
-    for sitemap_url in sitemap_urls:
-        print(f"[sitemap] fetching sitemap {sitemap_url}", flush=True)
-        try:
-            sitemap_xml, _, _ = _fetch_url(sitemap_url, state)
-        except RuntimeError as exc:
-            state.save_failure(sitemap_url, f"sitemap fetch failed: {exc}")
+    seen_indexes: set[str] = set()
+    for sitemap_index_url in sitemap_index_urls:
+        sitemap_index_url = canonicalize_url(sitemap_index_url)
+        if sitemap_index_url in seen_indexes:
             continue
-        for url in _parse_xml_locs(sitemap_xml):
-            if should_visit(url):
-                discovered.append(canonicalize_url(url))
+        seen_indexes.add(sitemap_index_url)
+        print(f"[sitemap] fetching index {sitemap_index_url}", flush=True)
+        try:
+            xml_text, _, _ = _fetch_url(sitemap_index_url, state)
+        except RuntimeError as exc:
+            state.save_failure(sitemap_index_url, f"sitemap index fetch failed: {exc}")
+            continue
+        sitemap_urls = _parse_xml_locs(xml_text)
+        print(f"[sitemap] discovered {len(sitemap_urls)} sitemap files from {sitemap_index_url}", flush=True)
+        for sitemap_url in sitemap_urls:
+            print(f"[sitemap] fetching sitemap {sitemap_url}", flush=True)
+            try:
+                sitemap_xml, _, _ = _fetch_url(sitemap_url, state)
+            except RuntimeError as exc:
+                state.save_failure(sitemap_url, f"sitemap fetch failed: {exc}")
+                continue
+            for url in _parse_xml_locs(sitemap_xml):
+                if should_visit(url):
+                    discovered.append(canonicalize_url(url))
     print(f"[sitemap] discovered {len(discovered)} candidate HTML URLs", flush=True)
     return discovered
 
@@ -301,16 +320,21 @@ def _reconstruct_frontier_from_saved_pages(state: CrawlState) -> deque[str]:
 
 
 def crawl_site(
-    start_url: str,
+    start_urls: list[str],
     out_dir: str,
     max_pages: int | None = None,
-    sitemap_index_url: str = DEFAULT_SITEMAP_INDEX,
+    sitemap_index_urls: list[str] | None = None,
     crawl_delay_sec: float = DEFAULT_CRAWL_DELAY_SEC,
 ) -> None:
-    state = CrawlState(out_dir=out_dir, crawl_delay_sec=effective_crawl_delay(start_url, crawl_delay_sec))
+    canonical_start_urls = [canonicalize_url(url) for url in start_urls if should_visit(url)]
+    if not canonical_start_urls:
+        raise ValueError("No valid start URLs provided")
+    sitemap_index_urls = _resolve_sitemap_index_urls(canonical_start_urls, sitemap_index_urls or [])
+    state = CrawlState(out_dir=out_dir, crawl_delay_sec=effective_crawl_delay(canonical_start_urls[0], crawl_delay_sec))
     print(
-        f"[start] start_url={canonicalize_url(start_url)} out_dir={out_dir} "
-        f"max_pages={max_pages} crawl_delay_sec={state.crawl_delay_sec}",
+        f"[start] start_urls={canonical_start_urls} out_dir={out_dir} "
+        f"max_pages={max_pages} crawl_delay_sec={state.crawl_delay_sec} "
+        f"sitemap_index_urls={sitemap_index_urls}",
         flush=True,
     )
     queue = state.load_frontier()
@@ -318,9 +342,9 @@ def crawl_site(
         if state.manifest["saved"] or state.manifest["failed"]:
             queue = _reconstruct_frontier_from_saved_pages(state)
             if not queue:
-                if should_visit(start_url):
-                    queue.append(canonicalize_url(start_url))
-                sitemap_urls = _diversify_urls(_discover_sitemap_urls(sitemap_index_url, state))
+                for start_url in canonical_start_urls:
+                    queue.append(start_url)
+                sitemap_urls = _diversify_urls(_discover_sitemap_urls(sitemap_index_urls, state))
                 state.manifest["discovered_from_sitemaps"] = len(sitemap_urls)
                 state._flush_manifest()
                 print(
@@ -334,9 +358,9 @@ def crawl_site(
             else:
                 print(f"[queue] reconstructed {len(queue)} pending URLs from saved pages", flush=True)
         else:
-            if should_visit(start_url):
-                queue.append(canonicalize_url(start_url))
-            sitemap_urls = _diversify_urls(_discover_sitemap_urls(sitemap_index_url, state))
+            for start_url in canonical_start_urls:
+                queue.append(start_url)
+            sitemap_urls = _diversify_urls(_discover_sitemap_urls(sitemap_index_urls, state))
             state.manifest["discovered_from_sitemaps"] = len(sitemap_urls)
             state._flush_manifest()
             print(f"[queue] seeded {len(sitemap_urls)} diversified sitemap URLs", flush=True)
@@ -381,20 +405,37 @@ def crawl_site(
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--start-url", required=True)
+    parser.add_argument("--start-url", action="append", required=True)
     parser.add_argument("--out", required=True)
     parser.add_argument("--max-pages", type=int, default=5000)
-    parser.add_argument("--sitemap-index-url", default=DEFAULT_SITEMAP_INDEX)
+    parser.add_argument("--sitemap-index-url", action="append", default=[])
     parser.add_argument("--crawl-delay-sec", type=float, default=DEFAULT_CRAWL_DELAY_SEC)
     return parser.parse_args()
+
+
+def _resolve_sitemap_index_urls(start_urls: list[str], explicit_sitemap_index_urls: list[str]) -> list[str]:
+    resolved: list[str] = []
+    seen: set[str] = set()
+    candidates = list(explicit_sitemap_index_urls)
+    if not candidates:
+        for start_url in start_urls:
+            host = urllib.parse.urlparse(start_url).netloc
+            candidates.append(f"https://{host}/sitemap_index.xml")
+    for candidate in candidates:
+        canonical = canonicalize_url(candidate)
+        if canonical in seen:
+            continue
+        seen.add(canonical)
+        resolved.append(canonical)
+    return resolved
 
 
 if __name__ == "__main__":
     args = _parse_args()
     crawl_site(
-        start_url=args.start_url,
+        start_urls=args.start_url,
         out_dir=args.out,
         max_pages=args.max_pages,
-        sitemap_index_url=args.sitemap_index_url,
+        sitemap_index_urls=args.sitemap_index_url,
         crawl_delay_sec=args.crawl_delay_sec,
     )

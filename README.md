@@ -45,6 +45,22 @@ python3 tools/validate_submission.py
 python3 -m unittest discover -s tests
 ```
 
+## Optional Hugging Face Export
+
+To publish the cleaned corpus to a Hugging Face dataset repo:
+
+```bash
+pip install -r requirements_export.txt
+export HF_TOKEN=...
+python3 tools/upload_cleaned_to_hf.py \
+  --repo-id your-username/eecs-cleaned-corpus \
+  --pages data/interim/pages.jsonl \
+  --chunks data/interim/chunks.jsonl \
+  --benchmark data/qa/qa_live_benchmark.jsonl
+```
+
+Use `--mode dataset` if you want `pages.jsonl` pushed as a dataset split rather than as raw files.
+
 ## Bootstrap assumption
 
 This repository was designed for a blank-repo build. Sample data and sample retrieval artifacts are included so the runtime path works immediately and can be extended with the full EECS corpus offline.

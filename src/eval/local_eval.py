@@ -22,7 +22,7 @@ def run_local_eval(questions_path: str, predictions_out: str, results_out: str) 
     for example in examples:
         pred = pipeline.answer_question(example["question"])
         predictions.append(pred)
-        retrieved = pipeline.hybrid.search(example["question"], top_k=config["runtime"]["top_k"])
+        retrieved = pipeline.retrieve(example["question"])
         record = {
             "id": example["id"],
             "question": example["question"],
