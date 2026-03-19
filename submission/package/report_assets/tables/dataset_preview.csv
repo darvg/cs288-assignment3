@@ -1,5 +1,101 @@
 id,question,answer,source_url
 q_0001,What is the office number of Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
-q_0002,Which building houses the EECS undergraduate advising office?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
-q_0003,When is the department seminar held?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
-q_0004,What is the email for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0002,Which office is listed for Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0003,Where is Dan Klein's office?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0004,What room is Dan Klein in?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0005,Which Soda Hall office belongs to Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0006,Which building houses the EECS undergraduate advising office?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0007,Where is the undergraduate advising office located?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0008,What room is listed for EECS undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0009,What is the advising office location?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0010,Where can students find undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0011,When is the department seminar held?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0012,What time is the EECS seminar?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0013,On what schedule does the department seminar meet?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0014,When does the EECS seminar take place?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0015,What is the seminar time?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0016,What is the email for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0017,Which email address should students use for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0018,How do you email undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0019,What contact email is listed for the advising office?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0020,What is the advising office email?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0021,What is the office number of Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0022,Which office is listed for Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0023,Where is Dan Klein's office?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0024,What room is Dan Klein in?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0025,Which Soda Hall office belongs to Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0026,Which building houses the EECS undergraduate advising office?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0027,Where is the undergraduate advising office located?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0028,What room is listed for EECS undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0029,What is the advising office location?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0030,Where can students find undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0031,When is the department seminar held?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0032,What time is the EECS seminar?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0033,On what schedule does the department seminar meet?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0034,When does the EECS seminar take place?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0035,What is the seminar time?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0036,What is the email for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0037,Which email address should students use for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0038,How do you email undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0039,What contact email is listed for the advising office?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0040,What is the advising office email?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0041,What is the office number of Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0042,Which office is listed for Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0043,Where is Dan Klein's office?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0044,What room is Dan Klein in?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0045,Which Soda Hall office belongs to Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0046,Which building houses the EECS undergraduate advising office?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0047,Where is the undergraduate advising office located?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0048,What room is listed for EECS undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0049,What is the advising office location?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0050,Where can students find undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0051,When is the department seminar held?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0052,What time is the EECS seminar?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0053,On what schedule does the department seminar meet?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0054,When does the EECS seminar take place?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0055,What is the seminar time?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0056,What is the email for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0057,Which email address should students use for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0058,How do you email undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0059,What contact email is listed for the advising office?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0060,What is the advising office email?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0061,What is the office number of Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0062,Which office is listed for Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0063,Where is Dan Klein's office?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0064,What room is Dan Klein in?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0065,Which Soda Hall office belongs to Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0066,Which building houses the EECS undergraduate advising office?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0067,Where is the undergraduate advising office located?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0068,What room is listed for EECS undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0069,What is the advising office location?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0070,Where can students find undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0071,When is the department seminar held?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0072,What time is the EECS seminar?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0073,On what schedule does the department seminar meet?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0074,When does the EECS seminar take place?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0075,What is the seminar time?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0076,What is the email for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0077,Which email address should students use for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0078,How do you email undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0079,What contact email is listed for the advising office?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0080,What is the advising office email?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0081,What is the office number of Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0082,Which office is listed for Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0083,Where is Dan Klein's office?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0084,What room is Dan Klein in?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0085,Which Soda Hall office belongs to Dan Klein?,773 Soda Hall,https://eecs.berkeley.edu/people/faculty/dan-klein/
+q_0086,Which building houses the EECS undergraduate advising office?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0087,Where is the undergraduate advising office located?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0088,What room is listed for EECS undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0089,What is the advising office location?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0090,Where can students find undergraduate advising?,354 Cory Hall,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0091,When is the department seminar held?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0092,What time is the EECS seminar?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0093,On what schedule does the department seminar meet?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0094,When does the EECS seminar take place?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0095,What is the seminar time?,Fridays at 4pm,https://eecs.berkeley.edu/events/seminar/
+q_0096,What is the email for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0097,Which email address should students use for undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0098,How do you email undergraduate advising?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0099,What contact email is listed for the advising office?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/
+q_0100,What is the advising office email?,ugrad@eecs.berkeley.edu,https://eecs.berkeley.edu/resources/undergrads/advising/

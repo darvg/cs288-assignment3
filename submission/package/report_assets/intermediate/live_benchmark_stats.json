@@ -1,0 +1,38 @@
+{
+  "num_candidates": 1710,
+  "num_selected": 220,
+  "rule_counts": {
+    "wins": 24,
+    "named": 16,
+    "receives": 10,
+    "elected": 8,
+    "awarded": 18,
+    "selected": 8,
+    "appointed": 12,
+    "joins": 6,
+    "honored": 6,
+    "recognized": 5,
+    "topic_resources": 12,
+    "topic_academics": 10,
+    "topic_research": 8,
+    "topic_about": 4,
+    "topic_people": 4,
+    "topic_industry": 3,
+    "topic_courses": 24,
+    "topic_faculty": 18,
+    "topic_pubs": 24
+  },
+  "section_counts": {
+    "news": 113,
+    "resources": 12,
+    "academics": 10,
+    "research": 8,
+    "about": 4,
+    "people": 4,
+    "industry": 3,
+    "courses": 24,
+    "faculty": 18,
+    "pubs": 24
+  },
+  "guidelines": "This benchmark is auto-generated from the live EECS crawl using high-confidence title and contact patterns. Review questions for phrasing quality, keep answers short, and preserve the source URL for retrieval evaluation."
+}

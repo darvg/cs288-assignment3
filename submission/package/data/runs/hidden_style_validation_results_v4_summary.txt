@@ -1,0 +1,5 @@
+examples=113
+em=0.8319
+f1=0.8716
+latency_sec=93.6240
+categories={'correct': 94, 'generation_mismatch': 16, 'retrieval_miss': 3}

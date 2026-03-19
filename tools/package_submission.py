@@ -22,6 +22,7 @@ def main() -> None:
         "tools",
         "data/artifacts",
         "data/qa",
+        "data/sample",
         "data/interim/chunks.jsonl",
         "report_assets",
     ]:

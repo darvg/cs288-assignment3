@@ -1,5 +1,6 @@
 {
   "dense_model": "sentence-transformers/all-MiniLM-L6-v2",
-  "num_chunks": 3,
-  "dense_dir": "data/artifacts/dense"
+  "num_chunks": 22266,
+  "dense_dir": "data/artifacts/dense",
+  "hash_dim": 1024
 }

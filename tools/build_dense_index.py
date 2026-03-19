@@ -13,7 +13,7 @@ from src.io_utils import read_jsonl, write_json, write_jsonl
 from src.text_utils import simple_tokenize
 
 
-HASH_DIM = 4096
+HASH_DIM = 1024
 
 
 def load_embedder(model_name: str):
@@ -39,11 +39,16 @@ def build_faiss_index(embeddings):
 def save_dense_artifacts(out_dir: str, embeddings, index, metadata: list[dict]) -> None:
     target = Path(out_dir)
     target.mkdir(parents=True, exist_ok=True)
-    np.save(target / "embeddings.npy", embeddings)
+    np.save(target / "embeddings.npy", embeddings.astype(np.float16))
     write_jsonl(str(target / "metadata.jsonl"), metadata)
     write_json(
         str(target / "index.json"),
-        {"type": index["type"], "shape": index["shape"], "hash_dim": index["hash_dim"]},
+        {
+            "type": index["type"],
+            "shape": index["shape"],
+            "hash_dim": index["hash_dim"],
+            "dtype": "float16",
+        },
     )
 
 

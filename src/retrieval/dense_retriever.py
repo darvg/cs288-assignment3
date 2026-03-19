@@ -15,11 +15,13 @@ class DenseRetriever:
         artifact_root = Path(artifact_dir)
         self.model_name = model_name
         self.metadata = read_jsonl(str(artifact_root / "metadata.jsonl"))
+        index_info = read_json(str(artifact_root / "index.json"))
         self.embeddings = np.load(artifact_root / "embeddings.npy")
-        self.hash_dim = int(read_json(str(artifact_root / "index.json"))["hash_dim"])
+        self.hash_dim = int(index_info["hash_dim"])
+        self.dtype = str(index_info.get("dtype", str(self.embeddings.dtype)))
 
     def search(self, query: str, top_k: int = 10) -> list[RetrievedChunk]:
-        query_vector = self._encode(query)
+        query_vector = self._encode(query).astype(self.embeddings.dtype, copy=False)
         scores = self.embeddings @ query_vector
         order = np.argsort(scores)[::-1][:top_k]
         return [_to_chunk(self.metadata[i], float(scores[i]), "dense") for i in order if scores[i] > 0]

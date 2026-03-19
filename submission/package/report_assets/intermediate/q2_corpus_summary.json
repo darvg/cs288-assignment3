@@ -1,9 +1,11 @@
 {
-  "num_pages": 3,
-  "avg_chars": 161.0,
+  "num_pages": 4848,
+  "avg_chars": 3587.25,
   "urls": [
-    "https://eecs.berkeley.edu/resources/undergrads/advising/",
-    "https://eecs.berkeley.edu/people/faculty/dan-klein/",
-    "https://eecs.berkeley.edu/events/seminar/"
+    "https://eecs.berkeley.edu/2024/04/eecs-undergraduate-newsletter-04-26",
+    "https://eecs.berkeley.edu/2024/10/eecs-undergraduate-newsletter-october-18-2024",
+    "https://www2.eecs.berkeley.edu/Courses/EECS16B",
+    "http://www.eecs.berkeley.edu/~graceluo",
+    "https://eecs.berkeley.edu/news/theresa-meng-wins-ieee-alexander-graham-bell-medal"
   ]
 }

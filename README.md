@@ -38,6 +38,14 @@ python3 -m src.eval.ablations --config config/experiment.yaml
 
 `run.sh` only loads prebuilt artifacts. It never crawls the site or rebuilds indexes. If `llm.py` is unavailable or LLM access is disabled, the pipeline falls back to extractive answer selection and returns `unknown` when unsupported.
 
+If you run the repo on another machine and the runtime artifacts are missing, you can let it auto-download them by setting:
+
+```bash
+export RAG_CORPUS_BASE_URL="https://huggingface.co/datasets/<user>/<repo>/resolve/main"
+```
+
+The runtime will then fetch missing files under `data/artifacts/` and `data/interim/` before loading the pipeline.
+
 ## Validation
 
 ```bash

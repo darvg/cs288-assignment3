@@ -1,0 +1,22 @@
+{
+  "num_candidates": 1517,
+  "num_selected": 113,
+  "rule_counts": {
+    "course_prereq": 28,
+    "course_units": 24,
+    "contact_email": 10,
+    "contact_phone": 3,
+    "contact_office_hours": 9,
+    "deadline": 3,
+    "news_person": 36
+  },
+  "section_counts": {
+    "courses": 52,
+    "industry": 4,
+    "resources": 8,
+    "academics": 1,
+    "Faculty": 9,
+    "news": 39
+  },
+  "note": "Natural-language hidden-dev-style validation set generated from single-page extractive EECS facts."
+}

@@ -43,7 +43,11 @@ def _context_priority(question: str, chunk) -> tuple[float, float]:
 def build_qa_prompt(question: str, contexts: list[dict]) -> str:
     sections = [
         "Answer the question using only the provided contexts.",
-        "Return only the short answer. If unsupported, return unknown.",
+        "Return only the final short answer.",
+        "Do not explain.",
+        "Do not include newline characters.",
+        'If the answer is yes/no, return exactly "Yes" or "No".',
+        "If unsupported, return unknown.",
         f"Question: {question}",
         "Contexts:",
     ]

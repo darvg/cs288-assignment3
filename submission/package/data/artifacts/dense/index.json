@@ -1,7 +1,9 @@
 {
   "type": "IndexFlatIP",
   "shape": [
-    3,
-    50
-  ]
+    22266,
+    1024
+  ],
+  "hash_dim": 1024,
+  "dtype": "float16"
 }

@@ -4,9 +4,7 @@ import argparse
 import csv
 from pathlib import Path
 
-import yaml
-
-from ..config_utils import load_runtime_config
+from ..config_utils import load_runtime_config, parse_simple_yaml
 from ..io_utils import ensure_parent_dir, read_jsonl, write_json
 from ..pipeline.qa_pipeline import QAPipeline
 from .metrics import exact_match, token_f1
@@ -45,7 +43,7 @@ def run_experiment(config: dict) -> dict:
 
 def run_ablation_matrix(config_path: str) -> None:
     with open(config_path, "r", encoding="utf-8") as handle:
-        config = yaml.safe_load(handle)
+        config = parse_simple_yaml(handle.read())
     rows = [run_experiment(experiment) for experiment in config["experiments"]]
     results_csv = config["defaults"]["results_csv"]
     ensure_parent_dir(results_csv)

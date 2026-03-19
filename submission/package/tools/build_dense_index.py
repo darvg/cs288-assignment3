@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import argparse
-from collections import Counter
+import hashlib
 from pathlib import Path
 import sys
 
@@ -13,25 +13,23 @@ from src.io_utils import read_jsonl, write_json, write_jsonl
 from src.text_utils import simple_tokenize
 
 
+HASH_DIM = 1024
+
+
 def load_embedder(model_name: str):
     return {"model_name": model_name}
 
 
 def encode_chunks(chunks: list[dict], model_name: str) -> tuple[object, object]:
     _ = load_embedder(model_name)
-    vocab_counter: Counter[str] = Counter()
-    for chunk in chunks:
-        vocab_counter.update(simple_tokenize(chunk["text"]))
-    vocab = sorted(vocab_counter)
-    token_to_index = {token: idx for idx, token in enumerate(vocab)}
-    embeddings = np.zeros((len(chunks), len(vocab)), dtype=np.float32)
+    embeddings = np.zeros((len(chunks), HASH_DIM), dtype=np.float32)
     for row, chunk in enumerate(chunks):
         for token in simple_tokenize(chunk["text"]):
-            embeddings[row, token_to_index[token]] += 1.0
+            embeddings[row, _hash_index(token)] += 1.0
         norm = np.linalg.norm(embeddings[row])
         if norm:
             embeddings[row] /= norm
-    return embeddings, vocab
+    return embeddings, {"hash_dim": HASH_DIM}
 
 
 def build_faiss_index(embeddings):
@@ -41,22 +39,39 @@ def build_faiss_index(embeddings):
 def save_dense_artifacts(out_dir: str, embeddings, index, metadata: list[dict]) -> None:
     target = Path(out_dir)
     target.mkdir(parents=True, exist_ok=True)
-    np.save(target / "embeddings.npy", embeddings)
-    np.save(target / "vocab.npy", np.array(index["vocab"], dtype=object))
+    np.save(target / "embeddings.npy", embeddings.astype(np.float16))
     write_jsonl(str(target / "metadata.jsonl"), metadata)
-    write_json(str(target / "index.json"), {"type": index["type"], "shape": index["shape"]})
+    write_json(
+        str(target / "index.json"),
+        {
+            "type": index["type"],
+            "shape": index["shape"],
+            "hash_dim": index["hash_dim"],
+            "dtype": "float16",
+        },
+    )
 
 
 def build_dense(chunks_path: str, out_dir: str, model_name: str = "sentence-transformers/all-MiniLM-L6-v2") -> None:
     chunks = read_jsonl(chunks_path)
-    embeddings, vocab = encode_chunks(chunks, model_name)
+    embeddings, encoder_info = encode_chunks(chunks, model_name)
     index = build_faiss_index(embeddings)
-    index["vocab"] = vocab
+    index["hash_dim"] = encoder_info["hash_dim"]
     save_dense_artifacts(out_dir, embeddings, index, chunks)
     write_json(
         "data/artifacts/retrieval_manifest.json",
-        {"dense_model": model_name, "num_chunks": len(chunks), "dense_dir": out_dir},
+        {
+            "dense_model": model_name,
+            "num_chunks": len(chunks),
+            "dense_dir": out_dir,
+            "hash_dim": encoder_info["hash_dim"],
+        },
     )
+
+
+def _hash_index(token: str) -> int:
+    digest = hashlib.md5(token.encode("utf-8")).hexdigest()
+    return int(digest, 16) % HASH_DIM
 
 
 def _parse_args() -> argparse.Namespace:

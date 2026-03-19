@@ -13,10 +13,13 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict, deque
 from pathlib import Path
 
-from bs4 import BeautifulSoup
+try:
+    from bs4 import BeautifulSoup
+except ImportError:  # pragma: no cover - offline crawler only
+    BeautifulSoup = None
 
 DEFAULT_SITEMAP_INDEX = "https://eecs.berkeley.edu/sitemap_index.xml"
-DEFAULT_CRAWL_DELAY_SEC = 0.5
+DEFAULT_CRAWL_DELAY_SEC = 1.3
 USER_AGENT = "cs288-a3-rag-crawler/1.0"
 ALLOWED_HOST_RE = re.compile(r"^(?:www\d*\.)?eecs\.berkeley\.edu$", re.I)
 
@@ -65,7 +68,11 @@ def should_visit(url: str) -> bool:
         return False
     if not is_allowed_host(parsed.netloc):
         return False
+    if lower_path.startswith("/pubs/techrpts/"):
+        return False
     if lower_path.startswith("/book/") and len(parsed.path) > 300:
+        return False
+    if lower_path.startswith("/Pubs/"):
         return False
     if lower_path.endswith(disallowed_suffixes):
         return False
@@ -273,6 +280,17 @@ def _diversify_urls(urls: list[str]) -> list[str]:
 
 
 def _extract_links(base_url: str, html: str) -> list[str]:
+    if BeautifulSoup is None:
+        hrefs = re.findall(r"""href=["']([^"'#]+)["']""", html, flags=re.I)
+        links: list[str] = []
+        for href in hrefs:
+            if len(href) > 1024 or href.count(" ") > 3:
+                continue
+            candidate = canonicalize_url(urllib.parse.urljoin(base_url, href))
+            if should_visit(candidate):
+                links.append(candidate)
+        return links
+
     soup = BeautifulSoup(html, "html.parser")
     canonical_link = soup.find("link", rel=lambda value: value and "canonical" in str(value).lower())
     if canonical_link and canonical_link.get("href"):

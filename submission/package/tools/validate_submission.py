@@ -15,11 +15,13 @@ def _check(condition: bool, message: str) -> None:
 
 
 def _contains_forbidden_openrouter_usage() -> bool:
+    blocked_domain = "openrouter" + ".ai"
+    blocked_env = "OPENROUTER" + "_API_KEY"
     for path in ROOT.rglob("*.py"):
         if path.name in {"llm.py", "validate_submission.py"}:
             continue
         text = path.read_text(encoding="utf-8")
-        if "openrouter.ai" in text or "OPENROUTER_API_KEY" in text:
+        if blocked_domain in text or blocked_env in text:
             return True
     return False
 

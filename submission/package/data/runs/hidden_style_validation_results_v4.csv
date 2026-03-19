@@ -1,0 +1,114 @@
+id,question,pred,em,f1,retrieval_recall,url_recall,category
+hidden_style_q_0001,What are the prerequisites for EECS 16B?,MATH 54,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0002,What are the prerequisites for EE 121?,"EECS 16A, EECS 16B, and COMPSCI 70",1.0,1.0,1.0,1.0,correct
+hidden_style_q_0003,What are the prerequisites for CS 172?,COMPSCI 170,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0004,What are the prerequisites for CS C149?,20N; Computer Science 61C; Computer Science 70 or Math 55,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0005,What are the prerequisites for CS 282?,"164, Mathematics 113B, or permission of instructor",1.0,1.0,1.0,1.0,correct
+hidden_style_q_0006,What are the prerequisites for EE C239?,An upper division course in electromagnetics or fluid dynamics,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0007,What are the prerequisites for CS 39J?,Priority given to freshmen and sophomores,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0008,What are the prerequisites for EE C227C?,227A or consent of instructor,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0009,What are the prerequisites for EE 198?,2.0 GPA or better; 60,0.0,0.8571428571428571,1.0,1.0,generation_mismatch
+hidden_style_q_0010,What are the prerequisites for CS 262A?,162 and entrance exam,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0011,What are the prerequisites for CS 302?,COMPSCI 301 and two semesters of GSI experience,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0012,What are the prerequisites for EE W240B?,EL ENG W240A; MAS-IC students only,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0013,What are the prerequisites for EE 224A?,EL ENG 120 and EL ENG 126,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0014,What are the prerequisites for EE 242A?,EL ENG 140/240A or equivalent,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0015,What are the prerequisites for CS 162?,"COMPSCI 61B, COMPSCI 61C, and COMPSCI 70",1.0,1.0,1.0,1.0,correct
+hidden_style_q_0016,What are the prerequisites for CS 169?,COMPSCI 169A or COMPSCI W169A,0.0,0.4,1.0,1.0,generation_mismatch
+hidden_style_q_0017,What are the prerequisites for CS 198?,2.0 GPA or better; 60,0.0,0.8571428571428571,1.0,1.0,generation_mismatch
+hidden_style_q_0018,What are the prerequisites for EE W242B?,EL ENG W240A; EL ENG W242A; MAS-IC students only,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0019,What are the prerequisites for EE 290?,CS 182/282A,0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0020,What are the prerequisites for EE 42?,MATH 52,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0021,What are the prerequisites for CS 375?,Consent of instructor,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0022,What are the prerequisites for CS 150?,"Computer Science 61C, Electrical Engineering 40",1.0,1.0,1.0,1.0,correct
+hidden_style_q_0023,What are the prerequisites for EE 137B?,EL ENG 137A or consent of instructor,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0024,What are the prerequisites for EE 218A?,"MATH 53; EECS 16A and EECS 16B, or MATH 54",1.0,1.0,1.0,1.0,correct
+hidden_style_q_0025,What are the prerequisites for EECS 225B?,"Basic knowledge of signals and systems, convolution, and Fourier Transform",1.0,1.0,1.0,1.0,correct
+hidden_style_q_0026,What are the prerequisites for EE 290T?,Consent of instructor,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0027,What are the prerequisites for EE W230A?,MAS-IC students only,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0028,What are the prerequisites for EE 140?,EL ENG 105,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0029,How many units is EECS 16B?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0030,How many units is EE 121?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0031,How many units is CS 280A?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0032,How many units is EE C220A?,3,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0033,How many units is CS 172?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0034,How many units is EECS206A?,4.0,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0035,How many units is CS 297?,0-12,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0036,How many units is CS 370?,3,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0037,How many units is CS C149?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0038,How many units is CS 282?,3,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0039,How many units is EE C239?,3,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0040,How many units is CS 39J?,1-4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0041,How many units is EE C227C?,3,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0042,How many units is EE 198?,1-4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0043,How many units is CS 262A?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0044,How many units is CS 302?,3,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0045,How many units is EE W240B?,3,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0046,How many units is CS 298?,1-4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0047,How many units is EE C247B?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0048,How many units is CS C191?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0049,How many units is EE 224A?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0050,How many units is EE 242A?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0051,How many units is CS 162?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0052,How many units is EE 241A?,4,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0053,What is the email for Corporate Access Program?,cap-admin@eecs.berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0054,What is the email for EECS B.S. Advising?,eecs-advising@berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0055,What is the email for Getting into EE Classes?,ee-scheduling@eecs.berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0056,What is the email for Facilitating EECS DeCal Classes?,eecs-decal@eecs.berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0057,What is the email for M.Eng. Student Guide?,InternationalOffice@berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0058,What is the email for CS Undergraduate Advising and Support?,cs-advising@cs.berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0059,What is the email for ECE B.S. Advising?,ece-advising@berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0060,What is the email for Host Your Recruiting Events in EECS?,cap-admin@eecs.berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0061,What is the email for Graduate Student Résumé Directory?,public-relations@eecs.berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0062,What is the email for Start-Ups and Entrepreneurial Activity?,public-relations@eecs.berkeley.edu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0063,What phone number is listed on the Graduate Fellowships page?,866-673-4737,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0064,What phone number is listed on the GSI Guide: Staff Services and Procedures page?,Dissertations Research is the foundation of Berkeley EECS,0.0,0.0,0.0,1.0,retrieval_miss
+hidden_style_q_0065,What phone number is listed on the EECS Safety Manual page?,eecs,0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0066,What office hours are listed on the Women Faculty page?,"By appointment, 508 Cory Assistants:",0.0,0.0,0.0,1.0,retrieval_miss
+hidden_style_q_0067,What office hours are listed on the CS Emeriti and Retired Faculty page?,"M W 9-10, 719 Sutardja Dai Brian A",0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0068,What office hours are listed on the Teaching Faculty page?,"See Homepage, 781 Soda Teaching Schedule (Spring 2026): CS 47A",0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0069,What office hours are listed on the Faculty List page?,Tu,0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0070,What office hours are listed on the EE Faculty List page?,Tu,0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0071,What office hours are listed on the Current Faculty page?,arrange via email Ahmed Alaa Below The,0.0,0.4444444444444445,1.0,1.0,generation_mismatch
+hidden_style_q_0072,What office hours are listed on the CS Faculty List page?,"M W 9-10, 719 Sutardja Dai Brian A",0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0073,What office hours are listed on the Emeriti and Retired Faculty page?,"M W 9-10, 719 Sutardja Dai Brian A",0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0074,What office hours are listed on the EE Emeriti and Retired Faculty page?,by e-mail appointment,0.0,0.4,1.0,1.0,generation_mismatch
+hidden_style_q_0075,What is the deadline listed on the Rising Stars 2021 Accepting Applications page?,"June 16, 2021",1.0,1.0,1.0,1.0,correct
+hidden_style_q_0076,"What is the deadline listed on the Rediet Abebe co-chairing ACM Conference on Equity and Access in Algorithms, Mechanisms, & Optimization page?","The submission deadline is June 3, 2021",0.0,0.7272727272727273,1.0,1.0,generation_mismatch
+hidden_style_q_0077,What is the deadline listed on the EECS to host Rising Stars 2020 page?,"The application deadline is deadline is September 7, 2020",0.0,0.8,1.0,1.0,generation_mismatch
+hidden_style_q_0078,Who won IEEE Alexander Graham Bell Medal?,Theresa Meng,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0079,Who won the Taiwan Presidential Science Prize?,Chenming Hu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0080,Who won 2021 IEEE EDS Education Award?,Tsu-Jae King Liu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0081,Who was elected to board of UMC?,Jyuo-Min Shyu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0082,Who was named 2019 Hellman Faculty Fellows?,Rikky Muller and Ren Ng,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0083,Who was named CDSS Associate Dean for Undergraduate Studies?,John DeNero,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0084,Who won Berkeley Communications Conference award?,College of Engineering,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0085,Who received IEEE Richard M. Emberson Award?,Dave Hodges,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0086,Who won DRC 2020 Best Paper Award?,Ava Tan,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0087,Who won multiple best paper awards?,Ken Goldberg,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0088,Who won SIGecom Test-Of-Time Award?,Umesh Vazirani,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0089,Who was named Head of AI Safety and Alignment at Google DeepMind?,Anca Dragan,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0090,Who won the 2017-18 IBM PhD Fellowship?,Wenting Zheng,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0091,Who was elected to the NAE?,Tsu-Jae King Liu and Katherine Yelick,0.0,0.0,0.0,1.0,retrieval_miss
+hidden_style_q_0092,Who was elected IEEE Fellows class of 2017?,Jose Carmena and Bora Nikolic,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0093,Who was elected as a member of the 2017 Silicon Valley Engineering Hall of Fame?,Chenming Hu,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0094,Who won 2023 Marconi Prize?,Hari Balakrishnan,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0095,Who won ACM SIGSOFT Impact Paper Award?,Paper by Koushik Sen,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0096,Who was named Officer of the Most Excellent Order of the British Empire?,Stuart Russell,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0097,Who was named Bakar Fellow?,Raluca Ada Popa,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0098,Who was elected to the American Academy of Arts and Sciences?,Newly,0.0,0.0,1.0,1.0,generation_mismatch
+hidden_style_q_0099,Who won the 2016 Richard A. Tapia Achievement Award?,Dave Patterson,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0100,Who won VMware Early Career Faculty Award?,Alvin Cheung,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0101,Who won ARPA-E IGNIITE Early Career Award?,Jessica Boles,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0102,Who was named head of NSF Engineering Directorate?,Dawn Tilbury,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0103,Who received 2015 Chinese Government Scholarship?,Peng Zheng,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0104,Who won Society of Pediatric Radiology Pioneer Award?,Miki Lustig,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0105,Who won third place David L. Kirp Prize?,Nolan Pokpongkiat,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0106,Who won IJCAI-18 Award for Research Excellence?,Jitendra Malik,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0107,Who was awarded 2022 Bakar Prize?,Steven Conolly,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0108,Who was elected Chair of SIA?,Sanjay Mehrotra,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0109,Who was named to eSilicon Technical Advisory Board?,Michael Orshansky,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0110,Who received honorary doctorate from the KTH Royal Institute of Technology (KTH)?,Claire Tomlin,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0111,Who was named recipient of the 2017 IEEE Shannon Award?,David Tse,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0112,Who received Brooke Owens Fellowship?,Hannah Joo,1.0,1.0,1.0,1.0,correct
+hidden_style_q_0113,Who won Haas International Award?,Adnan Shihab-Eldin,1.0,1.0,1.0,1.0,correct

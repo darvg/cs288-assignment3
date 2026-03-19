@@ -46,8 +46,55 @@ class _TextParser(HTMLParser):
 
 
 def remove_boilerplate(text: str) -> str:
+    text = html.unescape(text)
+    text = re.sub(r"\s+", " ", text).strip()
+    generic_patterns = [
+        r"Skip to Content",
+        r"Expand Main Menu",
+        r"Collapse Main Menu",
+        r"Expand Search Form",
+        r"Collapse Search Form",
+        r"Expand Submenu",
+        r"Search for:\s*Search",
+        r"For Students For Faculty/Staff Industry News Events Give",
+        r"About About",
+        r"Academics Academics",
+        r"Research Research",
+        r"People People",
+        r"Connect Connect",
+        r"Resources Resources",
+        r"Blog Academics",
+        r"EE CS UC Berkeley Berkeley Engineering CDSS",
+        r"Accessibility Nondiscrimination Privacy Contact",
+        r"View Open Faculty Positions",
+        r"Learn more about the Campaign for Berkeley and Graduate Fellowships\. Give to EECS",
+        r"Berkeley EECS on Twitter Berkeley EECS on Instagram Berkeley EECS on LinkedIn Berkeley EECS on YouTube",
+        r"Cookie Policy",
+        r"Privacy Policy",
+    ]
+    for pattern in generic_patterns:
+        text = re.sub(pattern, " ", text, flags=re.I)
+
+    breadcrumb = re.search(r"\bHome\s*/\s*[^ ]", text)
+    if breadcrumb:
+        text = text[breadcrumb.start() :]
+        text = re.sub(r"^Home\s*/\s*", "", text)
+
+    footer_markers = [
+        r"\bAbout History Diversity Visiting Special Events\b",
+        r"\bConsider reaching out for a conversation\b",
+        r"\bContact us\b",
+        r"©\s*\d{4}\s*UC Regents",
+    ]
+    for marker in footer_markers:
+        match = re.search(marker, text, flags=re.I)
+        if match:
+            text = text[: match.start()]
+            break
+
     text = re.sub(r"\b(skip to main content|cookie policy|privacy policy)\b", " ", text, flags=re.I)
-    return " ".join(text.split())
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
 
 
 def html_to_clean_text(html_text: str, url: str) -> dict:

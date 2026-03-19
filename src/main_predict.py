@@ -4,6 +4,7 @@ import argparse
 import sys
 from pathlib import Path
 
+from .bootstrap_artifacts import ensure_runtime_artifacts
 from .config_utils import load_runtime_config
 from .io_utils import read_questions_txt, write_answers_txt
 from .pipeline.qa_pipeline import QAPipeline
@@ -24,6 +25,7 @@ def main() -> None:
         raise FileNotFoundError(f"Questions file not found: {questions_path}")
 
     config = load_runtime_config(args.config)
+    ensure_runtime_artifacts(config)
     pipeline = QAPipeline(config)
     questions = read_questions_txt(str(questions_path))
     answers = pipeline.answer_questions(questions)
